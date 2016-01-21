@@ -293,10 +293,16 @@
         
         addFood();
         
-        canvas.onkeydown = function(evt) {
+        // canvas.onkeydown = function(evt) {
+        //     evt = evt || window.event;
+        //     changeDir(evt.keyCode);
+        // }
+
+        $(canvas).on("swipe", function(evt) {
             evt = evt || window.event;
             changeDir(evt.keyCode);
-        }
+        });
+
         mainLoop();
                 
     }
@@ -416,14 +422,23 @@
                 });
             }
 
-        document.onkeydown = function(evt){
+        // document.onkeydown = function(evt){
+        //     if(screen_gameover.style.display == "block"){
+        //         evt = evt || window.event;
+        //         if(evt.keyCode == 32){
+        //             newGame();
+        //         }
+        //     }
+        // }
+
+        $(document).on("swipe", function(evt){
             if(screen_gameover.style.display == "block"){
                 evt = evt || window.event;
                 if(evt.keyCode == 32){
                     newGame();
                 }
             }
-        }
+        });
     }
 
 })();
